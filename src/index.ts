@@ -40,16 +40,22 @@ interface IViteChromeDevHelperPlugin {
   _command?: "serve" | "build";
 }
 
+const defaultConfig: IViteChromeDevHelperPlugin = {
+  port: 9222,
+  loadPath: "dist",
+  navigateUrl: "chrome://extensions",
+  apply: "build",
+  disableFilter: ["--disable-extensions"],
+  reload: false,
+};
+
 export const viteChromeDevPlugin = (
-  userConfig: IViteChromeDevHelperPlugin = {
-    navigateUrl: "chrome://extensions",
-    apply: "build",
-    loadPath: "dist",
-    reload: false,
-    disableFilter: ["--disable-extensions"],
-  }
+  userConfig?: IViteChromeDevHelperPlugin
 ) => {
-  const innerConfig: IViteChromeDevHelperPlugin = userConfig;
+  const innerConfig: IViteChromeDevHelperPlugin = Object.assign(
+    defaultConfig,
+    userConfig ?? {}
+  );
   let chrome: ChromeLauncher.LaunchedChrome | null = null;
 
   const runLauncher = async () => {
