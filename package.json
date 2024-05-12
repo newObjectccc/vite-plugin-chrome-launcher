@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-chrome-launcher",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "help you to open chrome-browser and goto chrome://extension, it is helpful when you are developing an extension for chrome.",
   "main": "dist/index.js",
   "type": "module",
