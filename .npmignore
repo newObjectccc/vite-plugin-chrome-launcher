@@ -11,3 +11,4 @@ src/*
 .prettierignore
 rollup.config.*
 tsconfig.json
+cliff.toml
