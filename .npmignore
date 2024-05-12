@@ -9,5 +9,5 @@ pnpm-lock.*
 src/*
 .prettierrc.*
 .prettierignore
-CHANGELOG.md
 rollup.config.*
+tsconfig.json
