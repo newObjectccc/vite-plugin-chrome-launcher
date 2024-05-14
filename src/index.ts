@@ -35,6 +35,10 @@ interface IViteChromeDevHelperPlugin {
    */
   reload?: boolean;
   /**
+   * [description] 设置chrome窗口大小
+   */
+  size?: [number, number];
+  /**
    * @description 用于判断当前命令是 serve 还是 build，不需要设置
    */
   _command?: "serve" | "build";
@@ -47,6 +51,7 @@ const defaultConfig: IViteChromeDevHelperPlugin = {
   apply: "build",
   disableFilter: ["--disable-extensions"],
   reload: false,
+  size: [1920, 1080],
 };
 
 export const viteChromeDevPlugin = (
@@ -73,7 +78,11 @@ export const viteChromeDevPlugin = (
     }
     const rewriteDefaultFlags = ChromeLauncher.Launcher.defaultFlags()
       .filter((flag: string) => !innerConfig.disableFilter!.includes(flag))
-      .concat([`--load-extension=${innerConfig.loadPath}`]);
+      .concat([
+        `--load-extension=${innerConfig.loadPath}`,
+        `--auto-open-devtools-for-tabs`,
+        `--window-size=${innerConfig.size!.join(",")}`,
+      ]);
     const launchOptions = {
       ignoreDefaultFlags: true,
       port: innerConfig.port ?? 9222,
