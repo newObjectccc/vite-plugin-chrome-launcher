@@ -6,7 +6,8 @@ node_modules/
 .npmignore
 commitlint.config.*
 pnpm-lock.*
-src/*
+pnpm-workspace.*
+packages/*
 .prettierrc.*
 .prettierignore
 rollup.config.*
