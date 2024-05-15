@@ -19,6 +19,8 @@ export default defineConfig({
         },
       ],
     }),
-    viteChromeDevPlugin(),
+    viteChromeDevPlugin({
+      navigateUrl: "http://github.com",
+    }),
   ],
 });
