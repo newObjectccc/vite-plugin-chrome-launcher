@@ -7,10 +7,10 @@ import typescript from "rollup-plugin-typescript2";
 export default {
   input: Object.fromEntries(
     glob
-      .sync("src/**/*.ts")
+      .sync("packages/core/**/*.ts")
       .map((file) => [
         path.relative(
-          "src",
+          "packages/core",
           file.slice(0, file.length - path.extname(file).length)
         ),
         fileURLToPath(new URL(file, import.meta.url)),

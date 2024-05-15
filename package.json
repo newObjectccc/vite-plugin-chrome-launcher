@@ -1,14 +1,11 @@
 {
   "name": "vite-plugin-chrome-launcher",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "help you to open chrome-browser and goto chrome://extension, it is helpful when you are developing an extension for chrome.",
-  "main": "dist/index.js",
+  "man": "dist/index.js",
   "type": "module",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "release": "npx git-cliff@latest && pnpm build && npm publish",
-    "build": "rollup --config"
-  },
+  "author": "Vesper@之一",
+  "license": "MIT",
   "keywords": [
     "javascript",
     "config",
@@ -22,8 +19,12 @@
     "extension",
     "vite"
   ],
-  "author": "Vesper@之一",
-  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup --config",
+    "release": "npx git-cliff@latest && pnpm build && npm publish"
+  },
+  "types": "dist/index.d.ts",
   "dependencies": {
     "chrome-launcher": "^1.1.1",
     "chrome-remote-interface": "^0.33.0"
