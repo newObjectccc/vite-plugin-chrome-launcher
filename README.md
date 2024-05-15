@@ -35,8 +35,8 @@ interface IViteChromeDevHelperPlugin {
    */
   loadPath?: string;
   /**
-   * @description 设置打开chrome后要加载页面
-   * @default 'chrome://extensions'
+   * @description 设置打开chrome后要加载页面，默认会加载扩展管理页面，此参数会额外加载一个tab页
+   * @example 'chrome://extensions'
    */
   navigateUrl?: string;
   /**
@@ -55,8 +55,14 @@ interface IViteChromeDevHelperPlugin {
    */
   reload?: boolean;
   /**
+   * [description] 设置chrome窗口大小
+   */
+  size?: [number, number];
+  /**
    * @description 用于判断当前命令是 serve 还是 build，不需要设置
    */
   _command?: "serve" | "build";
 }
+
+
 ```
