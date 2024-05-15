@@ -13,7 +13,11 @@ help you to open chrome-browser and goto chrome://extension, it is helpful when 
 
 ```ts
 // vite.config.ts
-plugins: [viteChromeDevPlugin()]
+import {viteChromeDevPlugin} from 'vite-plugin-chrome-launcher'
+
+{
+  plugins: [viteChromeDevPlugin()]
+}
 ```
 
 ## Configuration
