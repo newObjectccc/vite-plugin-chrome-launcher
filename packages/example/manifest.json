@@ -1,0 +1,11 @@
+{
+  "name": "My Chrome Extension",
+  "version": "1.0",
+  "description": "A brief description of my extension",
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 3,
+  "permissions": ["tabs", "http://*/*", "https://*/*"]
+}

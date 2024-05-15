@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build --watch",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "vite-plugin-chrome-launcher": "workspace:vite-plugin-chrome-launcher@*",
+    "vite-plugin-static-copy": "^1.0.4"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  }
+}
