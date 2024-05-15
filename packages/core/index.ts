@@ -15,8 +15,8 @@ interface IViteChromeDevHelperPlugin {
    */
   loadPath?: string;
   /**
-   * @description 设置打开chrome后要加载页面
-   * @default 'chrome://extensions'
+   * @description 设置打开chrome后要加载页面，默认会加载扩展管理页面，此参数会额外加载一个tab页
+   * @example 'chrome://extensions'
    */
   navigateUrl?: string;
   /**
@@ -47,7 +47,6 @@ interface IViteChromeDevHelperPlugin {
 const defaultConfig: IViteChromeDevHelperPlugin = {
   port: 9222,
   loadPath: "dist",
-  navigateUrl: "chrome://extensions",
   apply: "build",
   disableFilter: ["--disable-extensions"],
   reload: false,
@@ -81,6 +80,8 @@ export const viteChromeDevPlugin = (
       .concat([
         `--load-extension=${innerConfig.loadPath}`,
         `--auto-open-devtools-for-tabs`,
+        `--enable-extension-activity-logging`,
+        `--enable-extension-activity-log-testing`,
         `--window-size=${innerConfig.size!.join(",")}`,
       ]);
     const launchOptions = {
@@ -100,7 +101,10 @@ export const viteChromeDevPlugin = (
       const { Network, Page } = client;
       await Network.enable();
       await Page.enable();
-      await Page.navigate({ url: innerConfig.navigateUrl! });
+      await Page.navigate({ url: "chrome://extensions" });
+      if (innerConfig.navigateUrl) {
+        await CDP.New({ url: innerConfig.navigateUrl! });
+      }
       await Page.loadEventFired();
     } catch (err) {
       console.error(err);
