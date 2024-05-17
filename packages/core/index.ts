@@ -128,9 +128,11 @@ export const viteChromeDevPlugin = (
       if (innerConfig._command === "build") return;
       await runLauncher();
     },
-    async closeBundle() {
+    closeBundle() {
       if (innerConfig._command === "serve") return;
-      await runLauncher();
+      setTimeout(() => {
+        runLauncher();
+      }, 20);
     },
   };
 };
